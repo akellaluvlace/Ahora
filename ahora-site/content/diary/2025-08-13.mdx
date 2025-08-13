@@ -1,0 +1,61 @@
+---
+# --- DUMMY ENTRY 1: "THE KITCHEN SINK" ---
+# This entry tests every possible feature.
+
+title: "Day 1 (Dummy) — The Foundation"
+date: "2025-08-13"
+mood: "🛠️ building"
+
+# Tests the "Today's Challenge" component
+challenge: "Getting all the dummy content to populate correctly."
+
+# Tests the "Today I Learned" component (with an array)
+til:
+  - "The `gray-matter` library is incredibly efficient for parsing front-matter."
+  - "Conic gradients are surprisingly powerful for creating simple pie charts in pure CSS."
+
+# Tests all achievement list variations
+progress:
+  - "Project structure finalized." # Simple string test
+  - text: "GitHub repo created and pushed" # Object with link test
+    link: "https://github.com"
+social:
+  - text: "Placeholder image test for a social event." # Object with image test
+    img: "/achievements/test-achievement.png"
+dev:
+  - "Wired up the DiarySelectionContext."
+  - text: "First test of the code syntax highlighter" # Object with code block test
+    lang: "tsx"
+    code: |
+      function HelloDummy() {
+        // This code should be highlighted!
+        return <div>It works!</div>
+      }
+personal:
+  - "Scheduled time for the project this week."
+  - "Drank a reasonable amount of coffee."
+
+# Tests the counters
+hours: 2.5
+money: 10 # Let's say we bought a domain
+
+# Tests social stats in AchievementCircles header
+social_posts: ["x"]
+followers_delta:
+  x: 5
+  linkedin: 2
+
+# Tests the "Discuss on..." links on the entry card
+discussion:
+  x: "https://twitter.com"
+  linkedin: "https://linkedin.com"
+
+# Tests the Special Thanks gallery component
+thanks:
+  - title: "Dummy Shoutout"
+    caption: "This tests the image card gallery with a link."
+    img: "/thanks/test-shoutout.jpg"
+    link: "https://google.com"
+  - title: "A Thanks Without an Image"
+    caption: "This tests a card with only text."
+---
