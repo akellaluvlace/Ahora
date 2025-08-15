@@ -1,0 +1,86 @@
+@theme {
+  /* ===== Base (LIGHT) ===== */
+  /* Canvas + cards: subtle contrast, crisp borders, readable text */
+  --color-bg: #f5f7fb;         /* light grey canvas */
+  --color-surface: #e9edf3;    /* darker grey cards for contrast */
+  --color-border: #cfd7e3;     /* cool thin border */
+  --color-text: #0a0a0b;       /* near-black text */
+  --color-muted: #5b6472;      /* modern muted grey */
+  --color-accent: #5B21B6;     /* brand */
+
+  --radius-card: 14px;
+  --radius-pill: 9999px;
+  --container: 1100px;
+
+  /* NEW: Define fallback gradient colors that use the default border color */
+  --gradient-start: var(--color-border);
+  --gradient-end: var(--color-border);
+}
+
+/* ===== DARK overrides (triggered by .dark on <html>) ===== */
+.dark {
+  --color-bg: #0b0b0c;
+  --color-surface: #0f1115;
+  --color-border: #2a2a2a;
+  --color-text: #eaeaea;
+  --color-muted: #a1a1aa;
+}
+
+/* ===== Utilities ===== */
+@utility page {
+  min-height: 100svh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+@utility container {
+  max-width: var(--container);
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* MODIFIED: This is the key change for gradient borders */
+@utility surface {
+  border-radius: var(--radius-card);
+  /* 1. Set a transparent border of the desired width */
+  border: 1px solid transparent;
+  /* 2. Use a double background layer technique */
+  background:
+    /* Layer 1: The inner surface color, clipped to the padding box */
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    /* Layer 2: The gradient border, clipped to the border box */
+    linear-gradient(to right, var(--gradient-start), var(--gradient-end)) border-box;
+}
+
+
+@utility card { @apply surface p-4 md:p-6; }
+@utility subtle { color: var(--color-muted); }
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  height: 2.75rem;
+  padding-inline: 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  transition: transform .06s ease, opacity .12s ease;
+}
+@utility btn:hover { opacity: .92; }
+@utility btn:active { transform: translateY(1px); }
+
+@utility btn-primary {
+  background-color: var(--color-accent);
+  color: white;
+  border: 1px solid color-mix(in oklab, var(--color-accent), black 12%);
+}
+
+@utility panel-title { font-weight: 700; font-size: clamp(22px, 3vw, 26px); }
+@utility hero-title { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(28px, 5vw, 48px); }
+@utility hero-lead { @apply subtle; font-size: clamp(14px, 2.2vw, 16px); }
+
+@utility bg-gradient-radial { background-image: radial-gradient(var(--tw-gradient-stops)); }
+@utility bg-gradient-conic  { background-image: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops)); }
